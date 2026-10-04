@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Search">
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <h1>Search</h1>
+  <div id="search"></div>
+  <noscript>Search needs JavaScript.</noscript>
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      // eslint-disable-next-line no-undef
+      new PagefindUI({ element: '#search', showSubResults: true, autofocus: true });
+    });
+  </script>
+</Base>

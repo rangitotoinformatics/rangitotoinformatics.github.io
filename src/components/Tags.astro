@@ -1,0 +1,11 @@
+---
+interface Props {
+  difficulty?: string;
+  topics?: string[];
+}
+const { difficulty, topics = [] } = Astro.props;
+---
+<span class="tags">
+  {difficulty && <a class={`tag diff-${difficulty}`} href={`/problems/?difficulty=${difficulty}`}>{difficulty}</a>}
+  {topics.map((t) => <a class="tag" href={`/problems/?topic=${encodeURIComponent(t)}`}>{t}</a>)}
+</span>

@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tags from '../../components/Tags.astro';
+import { DIFFICULTIES, getProblems, getTopics } from '../../lib/content';
+const problems = await getProblems();
+const topics = await getTopics();
+---
+<Base title="Problems">
+  <h1>Problems</h1>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Filter by title" aria-label="Filter by title" />
+    <select id="difficulty" aria-label="Difficulty">
+      <option value="">All difficulties</option>
+      {DIFFICULTIES.map((d) => <option value={d}>{d}</option>)}
+    </select>
+    <select id="topic" aria-label="Topic">
+      <option value="">All topics</option>
+      {topics.map((t) => <option value={t}>{t}</option>)}
+    </select>
+  </div>
+  <ul class="list" id="problems">
+    {problems.map((p) => (
+      <li data-title={p.data.title.toLowerCase()} data-difficulty={p.data.difficulty} data-topics={JSON.stringify(p.data.topics)}>
+        <a href={`/problems/${p.id}/`}>{p.data.title}</a>
+        <Tags difficulty={p.data.difficulty} topics={p.data.topics} />
+      </li>
+    ))}
+  </ul>
+  <p id="empty" class="muted" hidden>No problems match.</p>
+</Base>
+
+<script>
+  const q = document.getElementById('q') as HTMLInputElement;
+  const difficulty = document.getElementById('difficulty') as HTMLSelectElement;
+  const topic = document.getElementById('topic') as HTMLSelectElement;
+  const items = [...document.querySelectorAll<HTMLLIElement>('#problems li')];
+  const empty = document.getElementById('empty')!;
+
+  const params = new URLSearchParams(location.search);
+  q.value = params.get('q') ?? '';
+  difficulty.value = params.get('difficulty') ?? '';
+  topic.value = params.get('topic') ?? '';
+
+  function apply() {
+    const text = q.value.trim().toLowerCase();
+    let shown = 0;
+    for (const li of items) {
+      const ok =
+        (!text || li.dataset.title!.includes(text)) &&
+        (!difficulty.value || li.dataset.difficulty === difficulty.value) &&
+        (!topic.value || JSON.parse(li.dataset.topics!).includes(topic.value));
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    empty.hidden = shown > 0;
+    const next = new URLSearchParams();
+    if (q.value) next.set('q', q.value);
+    if (difficulty.value) next.set('difficulty', difficulty.value);
+    if (topic.value) next.set('topic', topic.value);
+    history.replaceState(null, '', next.size ? `?${next}` : location.pathname);
+  }
+
+  [q, difficulty, topic].forEach((el) => el.addEventListener('input', apply));
+  apply();
+</script>

@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import Tags from '../../components/Tags.astro';
+import { getLessons } from '../../lib/content';
+const lessons = await getLessons();
+---
+<Base title="Lessons">
+  <h1>Lessons</h1>
+  <ol class="list">
+    {lessons.map((l) => (
+      <li>
+        <a href={`/lessons/${l.id}/`}>{l.data.order}. {l.data.title}</a>
+        <Tags topics={l.data.topics} />
+      </li>
+    ))}
+  </ol>
+</Base>

@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import { getLessons, getProblems } from '../lib/content';
+const lessons = (await getLessons()).slice(0, 5);
+const problems = (await getProblems()).slice(-5).reverse();
+---
+<Base>
+  <h1>Rangitoto Informatics</h1>
+  <p>Our school informatics club: algorithms, data structures and competitive programming.</p>
+
+  <h2>What is informatics?</h2>
+  <p>
+    Informatics olympiad problems ask you to design an efficient algorithm and implement it in code.
+    Solutions are judged automatically on hidden test cases under time and memory limits.
+  </p>
+
+  <h2>Competitions</h2>
+  <ul>
+    <li><a href="https://train.nzoi.org.nz">NZOI training site</a>: practice problems and NZ contests</li>
+    <li><a href="https://www.nzoi.org.nz">NZ Olympiad in Informatics</a>: selects New Zealand's team for the IOI</li>
+    <li><a href="https://ioinformatics.org">International Olympiad in Informatics (IOI)</a></li>
+  </ul>
+
+  <h2>Start here</h2>
+  <ul>
+    {lessons.map((l) => <li><a href={`/lessons/${l.id}/`}>{l.data.title}</a></li>)}
+  </ul>
+
+  <h2>Latest problems</h2>
+  <ul>
+    {problems.map((p) => <li><a href={`/problems/${p.id}/`}>{p.data.title}</a></li>)}
+  </ul>
+</Base>

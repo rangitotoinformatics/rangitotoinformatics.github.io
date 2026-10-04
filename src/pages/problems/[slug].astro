@@ -1,0 +1,56 @@
+---
+import { render } from 'astro:content';
+import { Code } from 'astro:components';
+import Base from '../../layouts/Base.astro';
+import Tags from '../../components/Tags.astro';
+import { getEditorial, getLesson, getProblems, getSolution } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await getProblems()).map((problem) => ({ params: { slug: problem.id }, props: { problem } }));
+}
+
+const { problem } = Astro.props;
+const { data } = problem;
+const { Content } = await render(problem);
+const editorial = await getEditorial(problem.id);
+const Editorial = editorial ? (await render(editorial)).Content : undefined;
+const solution = getSolution(problem.id);
+const lessons = (await Promise.all(data.lessons.map((l) => getLesson(l)))).filter((l) => l !== undefined);
+const hasStatement = Boolean(problem.body?.trim());
+---
+<Base title={data.title}>
+  <article data-pagefind-body>
+    <h1>{data.title}</h1>
+    <div class="meta" data-pagefind-ignore>
+      <Tags difficulty={data.difficulty} topics={data.topics} />
+      {data.timeLimit && <span class="muted">{data.timeLimit}s</span>}
+      {data.memoryLimit && <span class="muted">{data.memoryLimit} MB</span>}
+      <span data-pagefind-filter="type" hidden>Problem</span>
+      <span data-pagefind-filter="difficulty" hidden>{data.difficulty}</span>
+      {data.topics.map((t) => <span data-pagefind-filter="topic" hidden>{t}</span>)}
+    </div>
+    <p class="meta" data-pagefind-ignore>
+      {data.submitUrl && <a class="button" href={data.submitUrl}>Submit</a>}
+      {data.source && (
+        <span class="muted">Source: {data.source.url ? <a href={data.source.url}>{data.source.name}</a> : data.source.name}</span>
+      )}
+      {lessons.length > 0 && (
+        <span class="muted">Lesson: {lessons.map((l, i) => <>{i > 0 && ', '}<a href={`/lessons/${l.id}/`}>{l.data.title}</a></>)}</span>
+      )}
+    </p>
+    {hasStatement ? <Content /> : <p class="muted">Statement on the source site.</p>}
+  </article>
+
+  {Editorial && (
+    <details data-pagefind-ignore>
+      <summary>Editorial</summary>
+      <Editorial />
+    </details>
+  )}
+  {solution && (
+    <details data-pagefind-ignore>
+      <summary>Model solution</summary>
+      <Code code={solution.code} lang={solution.lang as any} theme="github-light" />
+    </details>
+  )}
+</Base>

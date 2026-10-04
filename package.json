@@ -1,0 +1,23 @@
+{
+  "name": "rangitotoinformatics-site",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^5.18.2",
+    "katex": "^0.19.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "pagefind": "^1.5.2",
+    "typescript": "^5.9.3"
+  },
+  "private": true,
+  "type": "module"
+}
