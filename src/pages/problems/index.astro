@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getProblems } from '../../lib/problems';
+
+const problems = await getProblems();
+---
+
+<BaseLayout title="Problems">
+  <h1>Problems</h1>
+  <ul>
+    {problems.map((p) => (
+      <li>
+        <a href={`/problems/${p.id}/`}>{p.data.title}</a> ({p.data.difficulty})
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

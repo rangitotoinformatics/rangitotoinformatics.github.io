@@ -23,6 +23,10 @@
     "node": ">=22.19.0"
   },
   "dependencies": {
-    "astro": "^7.3.5"
+    "@astrojs/markdown-remark": "^7.3.1",
+    "astro": "^7.3.5",
+    "katex": "^0.19.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   }
 }

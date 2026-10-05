@@ -1,4 +1,5 @@
 ---
+import 'katex/dist/katex.min.css';
 import Nav from '../components/Nav.astro';
 
 interface Props {
@@ -54,6 +55,12 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   pre {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.9em;
+  }
+
+  pre {
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
   }
 
   a {
