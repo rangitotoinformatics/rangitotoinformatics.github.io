@@ -4,23 +4,27 @@ interface Props {
   description?: string;
 }
 
+const siteName = 'Rangitoto Informatics';
+
 const {
-  title = 'Rangitoto Informatics',
+  title,
   description = 'Rangitoto Informatics club website',
 } = Astro.props;
+
+const fullTitle = title ? `${title} | ${siteName}` : siteName;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
   </head>
   <body>
     <header>
-      <a href="/">Rangitoto Informatics</a>
+      <a href="/">{siteName}</a>
     </header>
 
     <main>
@@ -28,7 +32,7 @@ const {
     </main>
 
     <footer>
-      <p>Rangitoto Informatics</p>
+      <p>{siteName}</p>
     </footer>
   </body>
 </html>

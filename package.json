@@ -1,13 +1,9 @@
 {
   "name": "rangitotoinformatics.github.io",
   "version": "1.0.0",
+  "private": true,
   "description": "Rangitoto Informatics club website: lessons, problems, and later an online judge.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
@@ -23,6 +19,9 @@
     "url": "https://github.com/rangitotoinformatics/rangitotoinformatics.github.io/issues"
   },
   "homepage": "https://github.com/rangitotoinformatics/rangitotoinformatics.github.io#readme",
+  "engines": {
+    "node": ">=22.19.0"
+  },
   "dependencies": {
     "astro": "^7.3.5"
   }
