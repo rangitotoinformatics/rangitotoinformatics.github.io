@@ -37,6 +37,39 @@ Output one integer: the maximum number of ores that can be collected, or $−1$ 
 - Subtask 3 (20 points): $N = 2$
 - Subtask 4 (40 points): No further constraints
 
+## Sample 1
+
+**Input**
+
+```text
+3 4
+3#12
+1521
+#309
+```
+
+**Output**
+
+```text
+21
+```
+
 ## Sample 1 explanation
 
 An optimal path is (1,1) → (2,1) → (2,2) → (2,3) → (2,4) → (3,4), collecting 3 + 1 + 5 + 2 + 1 + 9 = 21 ores. Going along the top row is impossible because (1,2) is lava. Note that there may be more than one optimal path.
+
+## Sample 2
+
+**Input**
+
+```text
+2 2
+1#
+#1
+```
+
+**Output**
+
+```text
+-1
+```

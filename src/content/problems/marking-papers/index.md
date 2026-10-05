@@ -11,7 +11,7 @@ The first and second students should get grades $6$ and $7$ respectively. Each s
 
 Additionally, Mr Gardiner doesn't want students to have grades that are too high (to minimise suspicion), so the grades must be calculated modulo $1,000,001,677$. Mr Gardiner recommends you apply the modulo after each addition or multiplication operation.
 
-After applying modulo $1,000,001,677$ to each grade, Mr Gardiner would like to know the index of the student with the highest grade.
+After applying modulo $1,000,001,677$ to each grade, Mr Gardiner would like to know the first index of a student with the highest grade.
 
 **Note:** <br>
 If you are using a type sensitive language like C++, Java, or C then make sure to use a 64 bit integer type to avoid integer overflow. 64-bit integer types include long long for C or C++, and long for C# or Java. <br>
@@ -23,7 +23,7 @@ Python users should include the following snippet in the beginning of their code
 The first and only line contains a single integer, $N$.
 
 ### OUTPUT
-Output the index of the student with the highest grade after applying modulo $1,000,001,677$ to each grade.
+Output the first index of a student with the highest grade after applying modulo $1,000,001,677$ to each grade.
 
 ### CONSTRAINTS
 - $3 \leq N \leq 1,000,000$

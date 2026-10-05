@@ -37,6 +37,27 @@ Output one line containing $N$ space-separated integers. The $i$th integer is th
 - Subtask 3 (25 points): $M = N − 1$ and every village can reach every other village
 - Subtask 4 (30 points): No further constraints
 
+## Sample
+
+**Input**
+
+```text
+7 6 2
+1 2
+2 3
+3 4
+2 5
+5 6
+6 3
+1 4
+```
+
+**Output**
+
+```text
+0 1 1 0 2 2 -1
+```
+
 ## Explanation
 
 Villages 1 and 4 contain beacons. Village 2 is one bridge from village 1. Village 3 is one bridge from village 4. Village 5 is two bridges from village 1 (5 → 2 → 1) and village 6 is two bridges from village 4 (6 → 3 → 4). Village 7 has no bridges at all, so it cannot reach any beacon.

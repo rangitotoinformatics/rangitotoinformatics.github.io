@@ -34,6 +34,23 @@ Output one integer: the minimum possible risk of the tower.
 - Subtask 3 (15 points): All $W_i$ are equal
 - Subtask 4 (60 points): No further constraints
 
+## Sample
+
+**Input**
+
+```text
+3
+5 2
+3 6
+4 1
+```
+
+**Output**
+
+```text
+3
+```
+
 ## Explanation
 
 Stack the boxes, from top to bottom, as box 3, box 1, box 2.
