@@ -39,3 +39,46 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     </footer>
   </body>
 </html>
+
+<style is:global>
+  body {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1f2328;
+  }
+
+  code,
+  pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+  }
+
+  a {
+    color: #0b5cad;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #d0d7de;
+  }
+
+  header > a {
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding: 1rem 0;
+    border-top: 1px solid #d0d7de;
+    color: #59636e;
+    font-size: 0.875rem;
+  }
+</style>
