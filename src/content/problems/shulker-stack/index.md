@@ -1,8 +1,8 @@
 ---
-problemId: 2
+problemId: 4
 title: Shulker Stack
-difficulty: hard
-topics: [greedy, sorting]
+difficulty: Hard
+topics: [Greedy, Sorting]
 ---
 
 Storage space on your SkyCloud island is running out, so you have decided to store all of your loot in shulker boxes and stack them into a single tall tower.

@@ -1,8 +1,8 @@
 ---
 problemId: 3
 title: Ore Run
-difficulty: medium
-topics: [dp, grids]
+difficulty: Medium
+topics: [DP]
 ---
 
 You have discovered a huge underground cave beneath your SkyCloud island. From above, the cave looks like a grid with $N$ rows and $M$ columns. Rows are numbered $1$ to $N$ from top to bottom and columns $1$ to $M$ from left to right.

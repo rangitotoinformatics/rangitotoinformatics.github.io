@@ -1,8 +1,8 @@
 ---
 problemId: 1
 title: Marking Papers
-difficulty: easy
-topics: [implementation, math]
+difficulty: Easy
+topics: [Implementation]
 ---
 
 Mr Gardiner needs to mark $N$ papers. Last year, he threw the papers down a staircase and gave the ones that landed further higher marks. However, there are too many papers this year, so he's asked you for your help.

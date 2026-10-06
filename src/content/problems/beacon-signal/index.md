@@ -1,8 +1,8 @@
 ---
-problemId: 4
+problemId: 2
 title: Beacon Signal
-difficulty: medium
-topics: [graphs, bfs]
+difficulty: Medium
+topics: [Graphs, BFS]
 ---
 
 The SkyCloud server has $N$ villages, numbered $1$ to $N$, connected by $M$ bidirectional bridges. Bridge $i$ joins villages $U_i$ and $V_i$. Crossing any bridge takes exactly one day. It may not be possible to travel between every pair of villages.
