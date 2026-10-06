@@ -17,11 +17,13 @@ const Editorial = editorial ? (await render(editorial)).Content : null;
 <BaseLayout title={problem.data.title}>
   <h1>{problem.data.title}</h1>
   <Content />
+  <details>
+    <summary>Difficulty and topics</summary>
+    {problem.data.difficulty}
+    <br>
+    {problem.data.topics.join(', ')}
+  </details>
   {Editorial && (
-    <details>
-      <summary>Difficulty</summary>
-      {problem.data.difficulty}
-    </details>
     <details>
       <summary>Editorial</summary>
       <Editorial />

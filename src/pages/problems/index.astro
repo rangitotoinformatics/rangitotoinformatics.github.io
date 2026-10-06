@@ -7,11 +7,45 @@ const problems = await getProblems();
 
 <BaseLayout title="Problems">
   <h1>Problems</h1>
-  <ul>
+
+  <input id="search" type="search" placeholder="Search by name, topic or difficulty" aria-label="Search problems" />
+
+  <ul id="problem-list">
     {problems.map((p) => (
-      <li>
+      <li data-search={[p.data.title, p.data.difficulty, ...p.data.topics].join(' ').toLowerCase()}>
         <a href={`/problems/${p.id}/`}>{p.data.title}</a>
       </li>
     ))}
   </ul>
+
+  <p id="no-results" hidden>No problems found.</p>
 </BaseLayout>
+
+<script>
+  const search = document.querySelector<HTMLInputElement>('#search')!;
+  const items = document.querySelectorAll<HTMLLIElement>('#problem-list li');
+  const noResults = document.querySelector<HTMLParagraphElement>('#no-results')!;
+
+  function filter() {
+    const words = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    items.forEach((li) => {
+      const text = li.dataset.search ?? '';
+      const match = words.every((w) => text.includes(w));
+      li.hidden = !match;
+      if (match) shown++;
+    });
+    noResults.hidden = shown > 0;
+  }
+
+  search.addEventListener('input', filter);
+</script>
+
+<style>
+  #search {
+    width: 100%;
+    padding: 0.5rem;
+    font: inherit;
+    box-sizing: border-box;
+  }
+</style>
