@@ -24,10 +24,15 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{fullTitle}</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
   <body>
     <header>
-      <a href="/">{siteName}</a>
+      <a href="/">
+        <img src="/logo_dark.png" alt="" width="48" height="48" />
+        {siteName}
+      </a>
       <Nav />
     </header>
 
@@ -81,6 +86,9 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     font-weight: 600;
     color: inherit;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   footer {
