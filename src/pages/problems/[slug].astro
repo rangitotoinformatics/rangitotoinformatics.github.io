@@ -19,6 +19,10 @@ const Editorial = editorial ? (await render(editorial)).Content : null;
   <Content />
   {Editorial && (
     <details>
+      <summary>Difficulty</summary>
+      {problem.data.difficulty}
+    </details>
+    <details>
       <summary>Editorial</summary>
       <Editorial />
     </details>

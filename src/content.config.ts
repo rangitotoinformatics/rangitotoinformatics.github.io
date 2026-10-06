@@ -9,7 +9,7 @@ const problems = defineCollection({
   schema: z.object({
     problemId: z.number().int(),
     title: z.string(),
-    difficulty: z.enum(['easy', 'medium', 'hard']),
+    difficulty: z.enum(['Easy', 'Medium', 'Hard']),
     topics: z.array(z.string()),
   }),
 });
@@ -18,4 +18,13 @@ const editorials = defineCollection({
   loader: glob({ pattern: '*/editorial.md', base: './src/content/problems', generateId: folderName }),
 });
 
-export const collections = { problems, editorials };
+const lessons = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/lessons' }),
+  schema: z.object({
+    title: z.string(),
+    order: z.number().int(),
+    description: z.string().optional(),
+  }),
+});
+
+export const collections = { problems, editorials, lessons };

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLessons } from '../../lib/lessons';
+
+const lessons = await getLessons();
+---
+
+<BaseLayout title="Lessons">
+  <h1>Lessons</h1>
+  <ol>
+    {lessons.map((l) => (
+      <li>
+        <a href={`/lessons/${l.id}/`}>{l.data.title}</a>
+        {l.data.description && <p>{l.data.description}</p>}
+      </li>
+    ))}
+  </ol>
+</BaseLayout>

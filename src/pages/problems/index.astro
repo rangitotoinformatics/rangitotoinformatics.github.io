@@ -10,7 +10,7 @@ const problems = await getProblems();
   <ul>
     {problems.map((p) => (
       <li>
-        <a href={`/problems/${p.id}/`}>{p.data.title}</a> ({p.data.difficulty})
+        <a href={`/problems/${p.id}/`}>{p.data.title}</a>
       </li>
     ))}
   </ul>
