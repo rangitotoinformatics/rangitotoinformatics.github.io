@@ -1,6 +1,3 @@
-## Model solution
-
-```cpp
 #include <bits/stdc++.h>
 using namespace std;
 const long long MOD = 1e9 + 1677;
@@ -16,4 +13,3 @@ int main() {
     }
     cout << max_element(grade.begin(), grade.end()) - grade.begin();
 }
-```

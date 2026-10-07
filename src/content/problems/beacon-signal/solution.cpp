@@ -1,6 +1,3 @@
-## Model solution
-
-```cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -31,4 +28,3 @@ signed main() {
     }
     for (ll i = 1; i <= N; i++) cout << dist[i] << " \n"[i == N];
 }
-```

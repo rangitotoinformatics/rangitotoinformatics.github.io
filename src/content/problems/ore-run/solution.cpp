@@ -1,6 +1,3 @@
-## Model solution
-
-```cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -23,4 +20,3 @@ signed main() {
     }
     cout << dp[N-1][M-1] << '\n';
 }
-```
