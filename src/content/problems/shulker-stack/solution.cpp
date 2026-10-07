@@ -1,6 +1,3 @@
-## Model solution
-
-```cpp
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
@@ -20,4 +17,3 @@ signed main() {
     }
     cout << best << '\n';
 }
-```
