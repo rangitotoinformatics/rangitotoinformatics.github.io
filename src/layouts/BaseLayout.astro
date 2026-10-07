@@ -23,17 +23,34 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+
     <title>{fullTitle}</title>
+
     <link rel="icon" href="/logos and favicons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/logos and favicons/favicon.png" />
+
+    <script is:inline>
+      document.documentElement.dataset.theme =
+        localStorage.getItem('theme') ??
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    </script>
   </head>
   <body>
     <header>
       <a href="/">
-        <img src="/logos and favicons/logo light.png" alt="" width="48" height="48" />
+        <img class="light-only" src="/logos and favicons/logo light.png" alt="" width="48" height="48" />
+        <img class="dark-only" src="/logos and favicons/logo dark.png" alt="" width="48" height="48" />
+        
         {siteName}
       </a>
-      <Nav />
+      
+      <div class="header-right">
+        <Nav />
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <span class="light-only">⏾</span>
+          <span class="dark-only">☀</span>
+        </button>
+      </div>
     </header>
 
     <main>
@@ -46,14 +63,50 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   </body>
 </html>
 
+<script>
+  const button = document.querySelector('#theme-toggle')!;
+  button.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>
+
 <style is:global>
+
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --text: #1f2328;
+    --muted: #59636e;
+    --link: #0b5cad;
+    --border: #d0d7de;
+    background: var(--bg);
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --bg: #0d1117;
+    --text: #e6edf3;
+    --muted: #9198a1;
+    --link: #4493f8;
+    --border: #3d444d;
+  }
+
+  :root[data-theme='dark'] .light-only {
+    display: none;
+  }
+  :root:not([data-theme='dark']) .dark-only {
+    display: none;
+  }
+
   body {
     max-width: 48rem;
     margin: 0 auto;
     padding: 0 1rem;
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #1f2328;
+    color: var(--text);
   }
 
   code,
@@ -69,7 +122,7 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   }
 
   a {
-    color: #0b5cad;
+    color: var(--link);
   }
 
   header {
@@ -79,7 +132,19 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
-    border-bottom: 1px solid #d0d7de;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-right { display: flex; align-items: center; gap: 1rem; }
+
+  #theme-toggle {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0 0.5rem;
+    cursor: pointer;
   }
 
   header > a {
@@ -94,8 +159,8 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   footer {
     margin-top: 3rem;
     padding: 1rem 0;
-    border-top: 1px solid #d0d7de;
-    color: #59636e;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
     font-size: 0.875rem;
   }
 </style>
