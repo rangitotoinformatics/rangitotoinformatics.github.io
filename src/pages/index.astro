@@ -3,10 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Home">
-  <h1>Welcome to Rangitoto Informatics!</h1>
-  <p>
-  We are an enthusiastic group of people sharing an interest in informatics!
-  </p>
+  <img class="banner" src="/banners/banner light.png" alt="Rangitoto Informatics" width="1536" height="512" />
 
   <h2>What is informatics?</h2>
   <p>
@@ -17,6 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <h2>What do we do?</h2>
   <p>
+  We are an enthusiastic group of people sharing an interest in informatics!
   At Informatics Club, we prepare you for two competitions:
   </p>
 
@@ -35,7 +33,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <h2>Where can you find us?</h2>
   <p>
-  Weekly on Mondays in A25!
+  Weekly on Monday lunchtimes in A25!
   </p>
 
   <br>
@@ -57,3 +55,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   More information can be found on their <a href="https://nzprogcontest.org.nz/">website</a>.
   </p>
 </BaseLayout>
+
+
+<style>
+  .banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+  }
+</style>
