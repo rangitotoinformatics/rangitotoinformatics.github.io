@@ -82,6 +82,9 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     --link: #0b5cad;
     --border: #d0d7de;
     background: var(--bg);
+    --list-head: #eef3fa;
+    --list-row: #ffffff;
+    --list-row-alt: #f6f8fa;
   }
 
   :root[data-theme='dark'] {
@@ -91,6 +94,9 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     --muted: #9198a1;
     --link: #4493f8;
     --border: #3d444d;
+    --list-head: #1e2a3b;
+    --list-row: #161b22;
+    --list-row-alt: #1c2129;
   }
 
   :root[data-theme='dark'] .light-only {
@@ -169,6 +175,30 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   :root[data-theme='dark'] .markdown-alert-important { --alert: #ab7df8; }
   :root[data-theme='dark'] .markdown-alert-warning { --alert: #d29922; }
   :root[data-theme='dark'] .markdown-alert-caution { --alert: #f85149; }
+
+  .problem-list {
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .problem-list::before {
+    content: 'Problem name';
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background: var(--list-head);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .problem-list ul { list-style: none; margin: 0; padding: 0; }
+  .problem-list li { padding: 0.75rem 1.25rem; background: var(--list-row); }
+  .problem-list li:nth-child(even) { background: var(--list-row-alt); }
+  .problem-list a { font-weight: 600; text-decoration: none; }
+  .problem-list a:hover { text-decoration: underline; }
 
   #theme-toggle {
     font: inherit;

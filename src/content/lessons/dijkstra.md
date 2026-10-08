@@ -44,5 +44,9 @@ Each element in this data structure is represented by two integers: {distance fr
 The time complexity is $O((V + E) \log V)$, where $V$ is the number of nodes and $E$ is the number of edges. Compare it to [BFS](../bfs/#what-does-the-code-look-like)!
 
 ## Try some problems
-Have a go at **Blast Off** (NZIC 2020). Hint: Make tile 0 the starting node.
-If you are done, try **Enshadowed** (NZIC 2023)
+<div class="problem-list">
+ 
+- [Blast Off (NZIC 2020)](https://train.nzoi.org.nz/problems/1133)
+- [Enshadowed (NZIC 2023)](https://train.nzoi.org.nz/problems/1306)
+ 
+</div>

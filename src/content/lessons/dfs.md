@@ -81,5 +81,9 @@ int main() {
 ```
 </details>
 
-### Try some problems
-Have a go at <mark> **DFS problem** (in the rangi informatics group) </mark>.
+## Try some problems
+<div class="problem-list">
+ 
+- [DFS problem](../../problems/dfs-problem)
+ 
+</div>

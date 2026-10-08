@@ -38,8 +38,10 @@ There are two changes we must make:
 - Instead of storing the just node in our queue, we also need to store the distance. When we push adjacent nodes into the queue, we now need to push (adjacent_node, **current_distance + 1**)
 
 ## Try some problems
-Have a go at **You, Robot** (NZIC 2019)
+<div class="problem-list">
 
-If you are done, try **Holiday Shopping** (NZIC 2022) Hint: Multi-source BFS
+- [You, Robot (NZIC 2019)](https://train.nzoi.org.nz/problems/1034)
+- [Holiday Shopping (NZIC 2022)](https://train.nzoi.org.nz/problems/1238)
+- [Counting Islands (NZIC 2017)](https://train.nzoi.org.nz/problems/786)
 
-**Counting islands** can be solved with BFS. However, it does not require you to find the shortest path, but rather the number of connected components. The solution is an exercise for readers.
+</div>
