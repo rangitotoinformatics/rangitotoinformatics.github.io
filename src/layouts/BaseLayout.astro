@@ -26,8 +26,8 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
 
     <title>{fullTitle}</title>
 
-    <link rel="icon" href="/logos and favicons/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/logos and favicons/favicon.png" />
+    <link rel="icon" href="/images/logos and favicons/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/images/logos and favicons/favicon.png" />
 
     <script is:inline>
       document.documentElement.dataset.theme =
@@ -38,8 +38,8 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   <body>
     <header>
       <a href="/">
-        <img class="light-only" src="/logos and favicons/logo light.png" alt="" width="48" height="48" />
-        <img class="dark-only" src="/logos and favicons/logo dark.png" alt="" width="48" height="48" />
+        <img class="light-only" src="/images/logos and favicons/logo light.png" alt="" width="48" height="48" />
+        <img class="dark-only" src="/images/logos and favicons/logo dark.png" alt="" width="48" height="48" />
         
         {siteName}
       </a>
@@ -82,15 +82,21 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     --link: #0b5cad;
     --border: #d0d7de;
     background: var(--bg);
+    --list-head: #eef3fa;
+    --list-row: #ffffff;
+    --list-row-alt: #f6f8fa;
   }
 
   :root[data-theme='dark'] {
     color-scheme: dark;
-    --bg: #0d1117;
+    --bg: #22262c;
     --text: #e6edf3;
     --muted: #9198a1;
     --link: #4493f8;
     --border: #3d444d;
+    --list-head: #1e2a3b;
+    --list-row: #161b22;
+    --list-row-alt: #1c2129;
   }
 
   :root[data-theme='dark'] .light-only {
@@ -107,6 +113,11 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text);
+  }
+
+  main img {
+    max-width: 100%;
+    height: auto;
   }
 
   code,
@@ -136,6 +147,58 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
   }
 
   .header-right { display: flex; align-items: center; gap: 1rem; }
+
+  .markdown-alert {
+    --alert: #0969da;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 0.25rem solid var(--alert);
+  }
+  .markdown-alert > :last-child { margin-bottom: 0; }
+  .markdown-alert-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--alert);
+  }
+  .markdown-alert-title svg { fill: currentColor; }
+  .markdown-alert-tip { --alert: #1a7f37; }
+  .markdown-alert-important { --alert: #8250df; }
+  .markdown-alert-warning { --alert: #9a6700; }
+  .markdown-alert-caution { --alert: #d1242f; }
+  :root[data-theme='dark'] .markdown-alert-note { --alert: #4493f8; }
+  :root[data-theme='dark'] .markdown-alert-tip { --alert: #3fb950; }
+  :root[data-theme='dark'] .markdown-alert-important { --alert: #ab7df8; }
+  :root[data-theme='dark'] .markdown-alert-warning { --alert: #d29922; }
+  :root[data-theme='dark'] .markdown-alert-caution { --alert: #f85149; }
+
+  .problem-list {
+    margin: 1rem 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .problem-list::before {
+    content: 'Problem name';
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background: var(--list-head);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .problem-list ul { list-style: none; margin: 0; padding: 0; }
+  .problem-list li { padding: 0.75rem 1.25rem; background: var(--list-row); }
+  .problem-list li:nth-child(even) { background: var(--list-row-alt); }
+  .problem-list a { font-weight: 600; text-decoration: none; }
+  .problem-list a:hover { text-decoration: underline; }
 
   #theme-toggle {
     font: inherit;

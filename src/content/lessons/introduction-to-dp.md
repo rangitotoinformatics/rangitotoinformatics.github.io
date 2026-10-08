@@ -1,6 +1,6 @@
 ---
 title: Introduction to DP
-order: 2
+order: 6
 ---
 
 Write the lesson here in Markdown.

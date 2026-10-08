@@ -5,6 +5,8 @@ export async function getProblems() {
   return all.sort((a, b) => a.data.problemId - b.data.problemId);
 }
 
+
 export async function getEditorial(slug: string) {
-  return getEntry('editorials', slug);
+  const editorials = await getCollection('editorials');
+  return editorials.find((e) => e.id === slug);
 }

@@ -11,7 +11,7 @@ const lessons = await getLessons();
     {lessons.map((l) => (
       <li>
         <a href={`/lessons/${l.id}/`}>{l.data.title}</a>
-        {l.data.description && <p>{l.data.description}</p>}
+        {l.data.description && <small> - {l.data.description}</small>}
       </li>
     ))}
   </ol>
