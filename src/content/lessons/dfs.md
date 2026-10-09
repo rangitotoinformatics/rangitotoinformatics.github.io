@@ -11,7 +11,9 @@ The depth first search (DFS) algorithm is a way to traverse a graph.
 The time complexity is $\Theta(V + E)$, where $V$ is the number of nodes and $E$ is the number of edges.
 
 > [!NOTE]
-> It doesn't guarantee the shortest path. It will become really slow if you use it to find the shortest path.
+> DFS doesn't guarantee the shortest path. The first path it finds may be much longer than another path.
+
+![DFS animation on a graph](/images/lessons/dfs/dfs.svg)
 
 ## Things we need
 - We need a data structure that prioritizes the node that we added most recently. The best choice is a **last in first out** data structure, such as a **stack**.
@@ -41,9 +43,9 @@ visited = [False for i in range(V)]
 
 def dfs(current):
     visited[current] = True
-    for next in adj[current]:
-        if not visited[next]:
-            dfs(next)
+    for nxt in adj[current]:
+        if not visited[nxt]:
+            dfs(nxt)
 dfs(source)
 ```
 </details>
@@ -63,9 +65,9 @@ vector<bool> visited;
 
 void dfs(int current) {
     visited[current] = true;
-    for(int next: adj[current]) {
-        if (not visited[next]) {
-            dfs(next);
+    for(int nxt: adj[current]) {
+        if (not visited[nxt]) {
+            dfs(nxt);
         }
     }
 }

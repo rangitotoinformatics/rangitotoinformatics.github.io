@@ -8,8 +8,8 @@ description: Graph representation
 - A graph is a set of objects that have connections between them.
 - These objects are called **vertices** (or **nodes**) and the connections are called **edges**.
 - An edge directly connects two nodes. Those two nodes are considered **adjacent**.
-- A **path** is a sequence of adjacent nodes where there is no repeated node. E.g., $1 → 2 → 4 → 3 → 5$
-- A **cycle** is a type of path that begins and ends at the same node. E.g., $1 → 2 → 4 → 3 → 1$
+- A **path** is a sequence of adjacent nodes where there is no repeated node. E.g., $1 \to 2 \to 4 \to 3 \to 5$
+- A **cycle** is a closed route that begins and ends at the same node, with no other repeated nodes. E.g., $1 \to 2 \to 4 \to 3 \to 1$
 ![A graph with nodes 1 to 6 joined by edges](/images/lessons/introduction-to-graph-theory/graph.svg)
 
 ## Properties of graphs
@@ -21,9 +21,9 @@ description: Graph representation
 - **Unweighted:** Edges have no "cost" to traverse.
 
 ## Common graphs
-The features of a graph can often stack. The most common graphs are:
+Graphs can have several of these properties at the same time. The most common graphs are:
 1. **Undirected graphs** (very generic looking)
-2. **Trees** (often for subtasks they are **Lines**)
+2. **Trees**
 3. **Directed acyclic graphs**
 
 Weighted and unweighted graphs are both common.
@@ -31,7 +31,7 @@ Weighted and unweighted graphs are both common.
 ## Representing the graph in code
 Computers cannot picture or see entire graphs like we do. We must store our graph in a way that allows computers to use our graph efficiently.
 
-One way to do so is to simply store a list of all the edges, where each edge is in the form $\{A, B\}$ (optional: include $W$ for weight). However, there are more efficient alternatives.
+One way to do so is to simply store a list of all the edges, where each edge is in the form $(A, B)$. A weighted edge can be represented as $(A, B, W)$, where $W$ is its weight. However, there are more efficient alternatives.
 
 ### Adjacency matrix
 Store an $N \times N$ grid. The value at row $A$ column $B$ is $1$ if there is an edge from node $A$ to node $B$. The value can be modified to the weight of the edge if the graph is weighted.
@@ -41,17 +41,15 @@ Store an $N \times N$ grid. The value at row $A$ column $B$ is $1$ if there is a
 The space complexity is $\Theta(N^2)$, where $N$ is the number of nodes.
 
 ### Adjacency list
-Store $N$ lists, all of which are empty. For every edge that connects a node $A$ to a node $B$, go to the $A$th list and add $B$ to it. If the graph is weighted, you must also append the weight of the edge along with $B$; this is most commonly done with tuples or pairs. An adjacency list tells the computer: Which nodes are adjacent to a certain node $A$?
+Store $N$ lists, all of which are empty. For every edge that connects a node $A$ to a node $B$, go to the $A$th list and add $B$ to it. If the graph is weighted, store the neighbouring node together with the edge weight, usually as a tuple or pair. An adjacency list tells the computer: Which nodes are adjacent to a certain node $A$?
 
 ![An undirected graph and its adjacency list](/images/lessons/introduction-to-graph-theory/adjacency-list.svg)
 
 The space complexity is $\Theta(N + M)$, where $N$ is the number of nodes and $M$ is the number of edges.
 
-### Tips
-In undirected graphs, ensure that you can travel from $B → A$, or it will become a directed graph.
-
-Adjacency lists are the most common and preferred way of storing a graph. They are mostly more efficient than other alternatives.
-This is because when a computer visits a node and needs to find adjacent nodes, it does not need to iterate through all $M$ edges, or all $N$ possible adjacent nodes (adjacency matrix).
+> [!TIP]
+> For an undirected edge between $A$ and $B$, add both $B$ to $A$'s list and $A$ to $B$'s list. Otherwise, the representation describes a directed graph.
+> <br><br>Adjacency lists are the most common and preferred way of storing a graph as they are mostly more efficient than other alternatives. This is because when a computer visits a node and needs to find adjacent nodes, it does not need to iterate through all $M$ edges, or all $N$ possible adjacent nodes (adjacency matrix).
 
 <details>
 <summary>Adjacency matrix: Python</summary>
