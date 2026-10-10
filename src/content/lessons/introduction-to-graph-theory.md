@@ -124,3 +124,10 @@ int main() {
 > [!NOTE] 
 > For weighted graphs, use `vector<vector<pair<int,int>>>` and do `adj_list[a].push_back({b, w})`
 </details>
+
+## Try some problems
+<div class="problem-list">
+ 
+- [Rumour Mill](../../problems/rumour-mill)
+ 
+</div>

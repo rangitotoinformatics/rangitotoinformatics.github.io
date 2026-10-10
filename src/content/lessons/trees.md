@@ -87,3 +87,11 @@ The resulting graph looks like a line!
 
 Can you see how a line satisfies all properties of a tree?
 ![A line of 4 nodes: 2 - 4 - 3 - 1](/images/lessons/trees/line.svg)
+
+
+## Try some problems
+<div class="problem-list">
+ 
+- [Team Sizes](../../problems/team-sizes)
+ 
+</div>
