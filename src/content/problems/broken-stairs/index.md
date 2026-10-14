@@ -5,7 +5,7 @@ difficulty: Medium
 topics: [DP]
 ---
 
-You are standing at the bottom of a staircase, on step $0$, and want to reach the top, step $N$. In one move you can climb up exactly $A_1$, $A_2$, \ldots, or $A_K$ steps.
+You are standing at the bottom of a staircase, on step $0$, and want to reach the top, step $N$. In one move you can climb up exactly $A_1$, $A_2, \ldots, or A_K$ steps.
 
 Unfortunately, $B$ of the steps, $C_1, C_2, \ldots, C_B$, are broken, and you must never land on one.
 
