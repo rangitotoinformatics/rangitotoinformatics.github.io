@@ -120,10 +120,25 @@ const fullTitle = title ? `${title} | ${siteName}` : siteName;
     height: auto;
   }
 
+  .katex {
+    font-size: 1.15em;
+  }
+
   code,
   pre {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.9em;
+  }
+
+  code {
+    font-size: 1.05em;   /* inline code */
+  }
+
+  pre {
+    font-size: 0.9rem;   /* code blocks: rem = relative to the page, not the parent */
+  }
+
+  pre code {
+    font-size: inherit;  /* stop the double shrink */
   }
 
   pre {
